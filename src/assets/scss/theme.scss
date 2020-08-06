@@ -1,0 +1,65 @@
+@charset "UTF-8";
+
+$fontGrayColor: #666;
+$borderColor: #e6e6e6;
+$bgColor: #f7f7f7;
+$tableBgColor: #fafafa;
+$mapBgColor: #f5f5f5;
+$tableCurrentBgColor: #fff0db;
+
+$red: #fe3509;
+$yellow: #f59307;
+$green: #156f32;
+$blue: #2ea7d4;
+$white: #fff;
+$black: #000;
+
+@mixin lineClampOne() {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin lineClamp($line) {
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+@mixin inlineBg($url, $width:100%, $height:100%, $x:center, $y:center) {
+  background: {
+    image:url($url);
+    position: $x $y;
+    size: $width $height;
+    repeat: no-repeat;
+  }
+}
+//垂直水平居中
+@mixin layoutMode($Mode:both) {
+  display: flex;
+  //垂直
+  @if $Mode==align {
+    align-items: center;
+  }
+  //水平
+  @if $Mode==pack {
+    justify-content: center;
+  }
+  //垂直水平居中
+  @if $Mode==both {
+    align-items: center;
+    justify-content: center;
+  }
+  //左右两边居中
+  @if $Mode==between {
+    justify-content: space-between;
+  }
+  //左右两边并垂直居中
+  @if $Mode==all {
+    align-items: center;
+    justify-content: center;
+    justify-content: space-between;
+  }
+}

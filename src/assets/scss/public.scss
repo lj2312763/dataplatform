@@ -1,0 +1,568 @@
+@charset "UTF-8";
+@import './theme.scss';
+//-----------------------------------------------------
+// reset scss
+//-----------------------------------------------------
+
+
+[v-cloak] {
+	display: none !important;
+}
+// icon-font
+[class^="el-icon-mc"],
+[class*=" el-icon-mc"] {
+	font-family: "iconfont" !important;
+}
+
+/*清浮动*/
+.clearfix{
+	zoom:1;
+	&:before,
+	&:after {
+		content:'';
+		display:block;
+		overflow:hidden;
+		visibility:hidden;
+		font-size:0;
+		line-height:0;
+		width:0;
+		height:0;
+	}
+	&:after{
+		clear:both;
+	}
+}
+/*滚动条样式*/
+.c-scroll-wrap {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.c-scroll-wrap::-webkit-scrollbar { /*滚动条整体部分，其中的属性有width,height,background,border等（就和一个块级元素一样）（位置1）*/
+    width: 10px;
+    height: 0;
+}
+
+.c-scroll-wrap::-webkit-scrollbar-thumb { /*滚动条里面可以拖动的那部分（位置5）*/
+    background: rgba(0, 0, 0, .5);
+    // background: rgba(0, 0, 0, 0);
+    border-radius: 33px;
+}
+// .c-scroll-inner {
+//     min-height: 100%;
+// }
+.c-scroll-inner::-webkit-scrollbar { /*滚动条整体样式*/
+    width: 5px; /*高宽分别对应横竖滚动条的尺寸*/
+    height: 5px;
+}
+
+.c-scroll-inner::-webkit-scrollbar-thumb { /*滚动条里面小方块*/
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    // -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.c-scroll-inner::-webkit-scrollbar-track { /*滚动条里面轨道*/
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    // -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0);
+    border-radius: 0;
+    background: rgba(0, 0, 0, 0.1);
+    // background: rgba(0, 0, 0, 0);
+}
+// 强制折行 
+.c-text-break {
+    text-align: justify;
+    white-space:normal; 
+    word-wrap: break-word;
+    word-break:break-all;
+}
+// global
+.c-text-left {
+	text-align: left;
+}
+.c-text-right {
+	text-align: right;
+}
+.c-text-center {
+	text-align: center;
+}
+
+.c-text-all {
+	@include layoutMode(all);
+}
+.c-text-both {
+	@include layoutMode(both);
+}
+.c-text-between {
+	@include layoutMode(between);
+}
+.c-text-pack {
+	@include layoutMode(pack);
+}
+.c-text-align {
+	@include layoutMode(align);
+}
+
+//等高布局 fill-available、fit-content、max-content、min-content
+// height: -webkit-fill-available; 利用fill-available可以轻松地实现等高布局
+// width: -webkit-fit-content表示将元素宽度收缩为内容宽度
+// width: -webkit-fit-content可以实现元素收缩效果的同时，保持原本的block水平状态，于是，就可以直接使用margin:auto实现元素向内自适应同时的居中效果了
+// width: -webkit-min-content表示采用内部元素最小宽度值最大的那个元素的宽度作为最终容器的宽度
+// .c-height-fill {
+// 	height: -webkit-fill-available;
+// }
+// .c-height-fit-content {
+// 	height: -webkit-fit-content;
+// }
+// .c-height-max-content {
+// 	height: -webkit-max-content;
+// }
+// .c-height-min-content {
+// 	height: -webkit-min-content;
+// }
+
+.c-block {
+	display: block;
+}
+.c-inline-block {
+	display: inline-block;
+}
+
+.c-pull-right {
+	float: right;
+}
+.c-pull-left {
+	float: left;
+}
+.c-vertical-top {
+	display: inline-block;
+	vertical-align: top;
+}
+.c-vertical-middle {
+	display: inline-block;
+	vertical-align: middle;
+}
+.c-vertical-bottom {
+	display: inline-block;
+	vertical-align: bottom;
+}
+
+.c-font-14 {
+	font-size: 14px !important;
+}
+.c-font-16 {
+	font-size: 16px !important;
+}
+//外壳 间距统
+.c-wrapper-10 {
+	margin: 10px;
+}
+.c-wrapper-20 {
+	margin: 20px;
+}
+.c-padding-10 {
+	padding: 10px;
+}
+.c-padding-20 {
+	padding: 20px;
+}
+.c-padding-30 {
+	padding: 30px;
+}
+//间距
+.c-ml-10 {
+	margin-left: 10px;
+}
+.c-mt-10 {
+	margin-top: 10px;
+}
+.c-mr-10 {
+	margin-right: 10px;
+}
+.c-mb-10 {
+	margin-bottom: 10px;
+}
+
+.c-ml-20 {
+	margin-left: 20px;
+}
+.c-mt-20 {
+	margin-top: 20px;
+}
+.c-mr-20 {
+	margin-right: 20px;
+}
+.c-mb-20 {
+	margin-bottom: 20px;
+}
+
+.c-pdl-10 {
+	padding-left: 10px;
+}
+.c-pdt-10 {
+	padding-top: 10px;
+}
+.c-pdr-10 {
+	padding-right: 10px;
+}
+.c-pdb-10 {
+	padding-bottom: 10px;
+}
+
+.c-pdl-20 {
+	padding-left: 20px;
+}
+.c-pdt-20 {
+	padding-top: 20px;
+}
+.c-pdr-20 {
+	padding-right: 20px;
+}
+.c-pdb-20 {
+	padding-bottom: 20px;
+}
+
+.c-mb-70  {
+	margin-bottom: 70px;
+}
+.c-border-bottom {
+	border-bottom: 1px solid $borderColor;
+}
+.c-border-top {
+	border-top: 1px solid $borderColor;
+}
+
+.c-width-precent-30 {
+	width: 30%;
+}
+.c-width-precent-40 {
+	width: 40%;
+}
+.c-width-precent-50 {
+	width: 50%;
+}
+// 头部下拉
+.c-header-dropdown {
+	text-align: center;
+    margin-top: 5px !important;
+    padding: 0 !important;
+    .el-dropdown-menu__item {
+        margin: 0 !important;
+    }
+    .el-dropdown-menu__item--divided:before {
+      height: 0;
+    }
+}
+//面包屑&&通用标题
+.c-title {
+	position: relative;
+    height: 34px;
+    background-color: #fff;
+    padding: 10px 20px 10px 15px;
+    font-size: 20px;
+    line-height: 34px;
+	color: #333 !important;
+	&:after {
+		content: "";
+		position: absolute;
+		left: 0px;
+		top: 50%;
+		width: 3px;
+		height: 21px;
+		background-color: $yellow;
+		margin-top: -10px;
+	}
+	&.el-breadcrumb {
+		padding-left: 20px;
+		&:after {
+			background-color: transparent;
+		}
+	}
+}
+h3.c-title {
+	padding-left: 20px;
+	box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.2);
+	&:after {
+		background-color: transparent;
+	}
+}
+.c-title-fixed {
+    background-color: #fff;
+    height: 54px;
+    h3.c-title {
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		z-index: 101;
+	}
+}
+
+.c-page {
+	position: absolute;
+	left: 20px;
+	right: 20px;
+	bottom: 0;
+	z-index: 9;
+	height: 70px;
+	background-color: $bgColor;
+	@include layoutMode(both);
+}
+
+.c-button-wrapper {
+	background-color: #fff;
+	padding: 13px 20px;
+	.el-button {
+		border-color: $blue;
+		color: $blue;
+		&.is-plain:focus, &.is-plain:hover {
+			border-color: $blue;
+			color: $blue;
+		    opacity: .6;
+		}
+	}
+}
+.c-return-btn {
+	float: right;
+	font-size: 16px;
+	color: $fontGrayColor;
+	line-height: 34px;
+	.el-page-header__left {
+		margin-right: 0;
+	}
+}
+
+.c-detail-box {
+	background: #fff;
+}
+.c-black-box {
+	background-color: $black;
+}
+.c-gray-box {
+	background-color: $mapBgColor;
+}
+.c-table-img {
+	display: inline-block;
+	height: 62px;
+}
+
+.c-red {
+	color: $red !important;
+}
+.c-yellow {
+	color: $yellow !important;
+}
+.c-green {
+	color: $green !important;
+}
+.c-blue {
+	color: $blue !important;
+}
+.c-white {
+	color: $white !important;
+}
+.c-hover-underline {
+	&:hover {
+		cursor: pointer;
+		text-decoration: underline;
+	}
+}
+.c-pos-relative {
+	position: relative;
+}
+.c-pos-absolute {
+	position: absolute;
+}
+
+.c-box {
+	width: 100%;
+	height: 100%;
+}
+.c-position-trbl {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+
+// 实体弹窗蒙层
+
+.c-view-dialog, .c-view-dialog-54 {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 101;
+	background-color: $bgColor;
+}
+.c-view-dialog {
+	top: 0;
+}
+.c-view-dialog-54 {
+	top: -54px;
+}
+// .c-view-dialog-54, .c-view-dialog {
+// 	.c-scroll-wrap {
+// 		height: calc(100% - 54px);
+// 	}
+// } 
+
+// c-detail-lable-box
+.c-detail-lable-list {
+	position: relative;
+	// font-size: 16px;
+	font-size: 14px;
+	line-height: 28px;
+	.c-detail-lable {
+		float: left;
+		padding: 10px 20px 10px 0;
+		min-width: 20%;
+		box-sizing: border-box;
+		.name {
+			color: $fontGrayColor;
+		}
+		.value {
+			color: $black;
+		}
+	}
+	.c-pos-btn {
+		position: absolute;
+		right: 0;
+		bottom: 10px;
+	}
+	&.c-padding-20 {
+		.c-pos-btn {
+			right: 20px;
+			bottom: 30px;
+		}
+	}
+	&.el-form {
+		// font-size: 16px;
+		.el-form-item {
+			float: none;
+			margin-bottom: 0;
+			margin-right: 50px;
+			min-width: 0;
+		}
+		.el-form-item__label {
+			// font-size: 16px;
+		}
+		.c-pos-btn {
+			right: 0;
+			bottom: 30px;
+			margin-right: 0;
+		}
+	}
+}
+
+.c-info-tag-desc {
+	margin-top: -20px;
+	border: 1px solid #e6e6e6;
+	border-top: none;
+	line-height: 24px;
+	.title {
+		position: relative;
+		text-align: center;
+		background-color: #fafafa;
+		padding: 10px 0;
+		&:before {
+			content: "";
+			position: absolute;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			width: 1px;
+			background-color: #e6e6e6;
+		}
+	}
+	.desc {
+		padding: 10px 0;
+		text-indent: 10px;
+	}
+}
+
+// 表格里的单元格里的内容超出四行显示省略号
+.c-table-popover-text {
+	@include lineClamp(4);
+}
+.c-table-popover-text-2 {
+	@include lineClamp(2);
+}
+.c-table-popover-text-1 {
+	@include lineClamp(1);
+}
+// 单元格里的popover提示框
+.c-table-popover {
+	box-shadow: 0 2px 12px 0 rgba(0,0,0,.5);
+	max-width: 350px !important;
+	min-width: auto !important;
+	width: auto !important;
+    .el-popover__title {
+        font-size: 14px;
+        line-height: 18px;
+    }
+    .c-table-popover-content {
+        padding-right: 5px;
+        max-height: 200px;
+        overflow-y: auto;
+    }
+
+}
+
+// 盒模型1：4
+.c-flex {
+    @include layoutMode(between);
+}
+.c-flex-1 {
+    flex: 1;
+}
+.c-flex-2 {
+    flex: 2;
+}
+.c-flex-3 {
+    flex: 3;
+}
+.c-flex-4 {
+    flex: 4;
+}
+.c-flex-5 {
+    flex: 5;
+}
+.c-flex-6 {
+    flex: 6;
+}
+
+// 为空
+.c-empty-box {
+	position: relative;
+    line-height: 20px;
+    padding: 80px 0 10px;
+    color: #909399;
+    text-align: center;
+	&:before {
+		content: "";
+	    position: absolute;
+	    left: 50%;
+	    top: 0;
+	    margin-left: -38px;
+	    width: 76px;
+	    height: 70px;
+		background-image: url(../images/table-empty.png);
+		background-size: 100% 100%;
+		background-position: center 10px;
+	}
+}
+
+.c-iframe {
+  border: none;
+  background: #000;
+  width: 100%;
+  height: 100%;
+}
+.c-border {
+  border: 1px solid #ccc;
+  padding:10px
+}
