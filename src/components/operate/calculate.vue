@@ -185,9 +185,8 @@
         }
 
         let parmsData = new FormData();
-        parmsData.append('tableName', this.choicedTableId);
+        parmsData.append('tableId', this.choicedTableId);
         parmsData.append('strParam', strParam);
-        parmsData.append('newFiled', null);
         colCalculate(parmsData).then(res => {
           if (res.code == 200000) {
             let detailData = res.data;
