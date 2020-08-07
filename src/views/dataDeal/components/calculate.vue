@@ -231,7 +231,7 @@
       }
       .operate{
         margin-left: 20px;
-        width: 300px;
+        width: 350px;
         background:#fff;
       }
     }

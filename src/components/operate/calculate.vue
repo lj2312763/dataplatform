@@ -22,7 +22,7 @@
                   :value="item.value">
                 </el-option>
               </el-select>
-              <i class="vxe-icon--close operation" v-if="columnArr.length > 1" @click="fieldMinus(i)"></i>
+              <el-button type="danger" v-if="columnArr.length > 1" size="small" @click="fieldMinus(i)">删除</el-button>
             </span>
 
           </div>
