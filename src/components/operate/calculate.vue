@@ -142,6 +142,7 @@
                 })
               }
             }
+            this.columnArr = [{ field: '', operation: '' }]
             this.$emit('beforeOperData', detailData);
           } else {
             this.$message({
