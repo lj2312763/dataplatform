@@ -9,11 +9,11 @@
     <div class="opContent c-mt-20 c-mb-10 box" v-show="currentId === 2">
       <template v-for="(item, i) in columnArr">
         <div style="padding: 10px">
-          <div >
-            <div style="text-align: center">
+          <div class="opContent-col-row">
+            <span class="opContent-col-label">
               请选择字段
-            </div>
-            <div class="opContent-col-item">
+            </span>
+            <span class="opContent-col-item">
               <el-select v-model="item.field" placeholder="请选择字段" style="width: 80%;" class="opContent-col-item-select">
                 <el-option
                   v-for="item in optionsArr"
@@ -23,7 +23,7 @@
                 </el-option>
               </el-select>
               <i class="vxe-icon--close operation" v-if="columnArr.length > 1" @click="fieldMinus(i)"></i>
-            </div>
+            </span>
 
           </div>
         </div>
@@ -33,10 +33,10 @@
               计算操作:
             </span>
             <vxe-radio-group v-model="item.operation" @change="checkOperation(item, i)">
-              <vxe-radio label="+" content="+"></vxe-radio>
-              <vxe-radio label="-" content="-"></vxe-radio>
-              <vxe-radio label="*" content="*"></vxe-radio>
-              <vxe-radio label="/" content="/"></vxe-radio>
+              <vxe-radio class="operation-text" label="+" content="+"></vxe-radio>
+              <vxe-radio class="operation-text" label="-" content="-"></vxe-radio>
+              <vxe-radio class="operation-text" label="*" content="x"></vxe-radio>
+              <vxe-radio class="operation-text" label="/" content="÷"></vxe-radio>
             </vxe-radio-group>
           </div>
         </div>
@@ -295,6 +295,15 @@
     height: 412px;
     overflow-y: auto;
   }
+  .opContent-col-row{
+    display: flex;
+    .opContent-col-label{
+      width: 100px;
+      display: flex;
+      align-items: center;
+      margin-right: 8px;
+    }
+  }
   .opContent-col-item{
     display: flex;
     align-items: center;
@@ -308,5 +317,8 @@
       font-size: 16px;
       margin-right: 10px;
     }
+  }
+  .operation-text{
+    font-size: 20px;
   }
 </style>
