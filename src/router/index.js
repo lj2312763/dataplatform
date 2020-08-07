@@ -40,6 +40,7 @@ const columnMerge = resolve => require(['@/views/dataDeal/components/columnMerge
 const rowMerge = resolve => require(['@/views/dataDeal/components/rowMerge'], resolve)
 const Location = resolve => require(["@/views/dataDeal/components/Location"], resolve)
 const character = resolve => require(["@/views/dataDeal/components/character"], resolve)
+const calculate = resolve => require(["@/views/dataDeal/components/calculate"], resolve)
 
 // 推断统计
 const deduce = resolve => require(['@/views/deduce/index'], resolve)
@@ -267,7 +268,7 @@ export const menuRouterMap = [{
                 {
                     name: "calculate",
                     path: "/dataDeal/calculate",
-                    component: rowMerge,
+                    component: calculate,
                     meta: {
                         title: "数据简单计算",
                         enable: "Y"

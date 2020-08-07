@@ -35,7 +35,7 @@ export const getDataList = params => {
         .get(`${HTTPURL}/data/myData/dataList`, { params: params })
         .then(res => res.data);
 };
-//获取计算单位列表 
+//获取计算单位列表
 export const getUnitList = params => {
     return axios.post(`${HTTPURL}/data/excelCalculation/getCalList`,params).then(res => res.data);
 };
@@ -43,4 +43,8 @@ export const getUnitList = params => {
 //行合并
 export const rowMerge = params => {
     return axios.post(`${HTTPURL}/data/column/rowtransfer`,params).then(res => res.data);
+};
+//列计算操作
+export const colCalculate = params => {
+  return axios.post(`${HTTPURL}/data/excelCalculation/Calculation`,params).then(res => res.data);
 };
